@@ -14,7 +14,20 @@ namespace SecurityFramework.IdentityServer.Services
             {
                 new Client
                 {
-
+                    Enabled = true,
+                    ClientName = "Identity Manager API",
+                    ClientId = "IdentityManagerAPI",
+                    ClientSecrets = new List<Secret>{
+                        new Secret("secret".Sha256())
+                    },
+                    Claims = new List<System.Security.Claims.Claim>
+                    {
+                        new System.Security.Claims.Claim("name", "Identity Manager API"),
+                        new System.Security.Claims.Claim("role", "IdentityManagerAdministrator")
+                    },
+                    Flow = Flows.ClientCredentials,
+                    PrefixClientClaims = false,
+                    AccessTokenType = AccessTokenType.Jwt
                 }
             };
         }

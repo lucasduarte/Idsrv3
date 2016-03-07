@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 
 namespace SecurityFramework.IdentityServer.Services
@@ -20,6 +21,20 @@ namespace SecurityFramework.IdentityServer.Services
                     Claims = new List<ScopeClaim>
                     {
                         new ScopeClaim("role")
+                    }
+                },
+                new Scope
+                {
+                    Enabled = true,
+                    Name = "IdentityManager",
+                    Emphasize = true,
+                    Description = "Access to a Identity Manager application",
+                    Type = ScopeType.Resource,
+
+                    Claims = new List<ScopeClaim>
+                    {
+                        new ScopeClaim(ClaimTypes.Name),
+                        new ScopeClaim(ClaimTypes.Role)
                     }
                 }
             };
