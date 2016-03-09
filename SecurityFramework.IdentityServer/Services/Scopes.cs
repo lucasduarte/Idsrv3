@@ -1,4 +1,5 @@
-﻿using IdentityServer3.Core.Models;
+﻿using IdentityServer3.Core;
+using IdentityServer3.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,19 @@ namespace SecurityFramework.IdentityServer.Services
                         new ScopeClaim(ClaimTypes.Name),
                         new ScopeClaim(ClaimTypes.Role)
                     }
+                },
+                new Scope
+                {
+                    Name = "idmgr",
+                    DisplayName = "IdentityManager",
+                    Description = "Authorization for IdentityManager",
+                    Type = ScopeType.Identity,
+                    Claims = new List<ScopeClaim>{
+                        new ScopeClaim(Constants.ClaimTypes.Name),
+                        new ScopeClaim(Constants.ClaimTypes.Role)
+                    }
                 }
+
             };
 
             scopes.Add(StandardScopes.OpenId);

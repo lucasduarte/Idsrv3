@@ -29,12 +29,15 @@ namespace SecurityFramework.IdentityServer.Configuration
 
             var factory = new IdentityServerServiceFactory();
 
+            factory.RegisterConfigurationServices(efConfig);
+            factory.RegisterOperationalServices(efConfig);
+
             factory.CorsPolicyService = new Registration<ICorsPolicyService>(new DefaultCorsPolicyService { AllowAll = true });
 
             //using in memory cfg just for testing purpose
-            factory.UseInMemoryUsers(Users.Get());
-            factory.UseInMemoryClients(Clients.Get());
-            factory.UseInMemoryScopes(Scopes.Get());
+            //factory.UseInMemoryUsers(Users.Get());
+            //factory.UseInMemoryClients(Clients.Get());
+            //factory.UseInMemoryScopes(Scopes.Get());
 
             return factory;
 
